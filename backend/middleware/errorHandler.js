@@ -1,11 +1,11 @@
-export const errorHandler = (req, res, next) =>
+export const notFound = (req, res, next) =>
 {
     res.status(404).json({
         message: `route not found: ${req.originalUrl}`
     });
 };
 
-export const generalErrorHandler = (err, req, res, next) =>
+export const errorHandler = (err, req, res, next) =>
 {
     console.error(err.stack);
     

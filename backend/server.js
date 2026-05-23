@@ -2,7 +2,8 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { connectDB } from "./config/db.js";
-import { errorHandler } from "./middleware/errorHandler.js";
+import { notFound, errorHandler } from "./middleware/errorHandler.js";
+import authRoutes from "./routes/auth.js";
 
 const app = express();
 
@@ -42,6 +43,9 @@ app.get("/api/health", (req, res) => {
   });
 });
 
+app.use("/api/auth", authRoutes);
+
+app.use(notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
