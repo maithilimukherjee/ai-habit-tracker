@@ -7,16 +7,11 @@ import {
     toDateKey
 } from "../utils/dateHelpers.js";
 
-/* -----------------------------
-   normalize date to midnight
------------------------------- */
-/* -----------------------------
-   normalize date to midnight (UTC)
------------------------------- */
+
 const normalizeDate = (d = new Date()) => {
     const date = new Date(d);
-    // Use UTC to prevent the server's timezone from shifting the day
-    date.setUTCHours(0, 0, 0, 0); 
+    // Use local time instead of UTC to avoid rolling back the day
+    date.setHours(0, 0, 0, 0); 
     return date;
 };
 

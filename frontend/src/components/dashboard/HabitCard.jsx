@@ -52,42 +52,22 @@ function HabitCard({
 }, [habit._id, isCompleted]);
 
 
-  const handleToggleComplete =
-    async () => {
-
-      try {
+  const handleToggleComplete = async () => {
+    try {
+        // Gets local date in YYYY-MM-DD format (e.g., "2026-05-25")
+        const localDate = new Date().toLocaleDateString('en-CA'); 
 
         if (isCompleted) {
-
-          await unmarkHabitComplete(
-            habit._id
-          );
-
-          setCompletedToday((prev) =>
-            prev.filter(
-              (id) => id !== habit._id
-            )
-          );
-
+            await unmarkHabitComplete(habit._id, localDate); // Passed here
+            setCompletedToday((prev) => prev.filter((id) => id !== habit._id));
         } else {
-
-          await markHabitComplete(
-            habit._id
-          );
-
-          setCompletedToday((prev) => [
-            ...prev,
-            habit._id
-          ]);
-
+            await markHabitComplete(habit._id, localDate); // Passed here
+            setCompletedToday((prev) => [...prev, habit._id]);
         }
-
-      } catch (error) {
-
+    } catch (error) {
         console.log(error);
-
-      }
-    };
+    }
+};
 
   return (
 

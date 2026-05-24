@@ -1,9 +1,7 @@
 import api from "./api";
 
 export const getTodayLogs = async () => {
-
   const token = localStorage.getItem("token");
-
   const response = await api.get(
     "/logs/today",
     {
@@ -12,55 +10,41 @@ export const getTodayLogs = async () => {
       }
     }
   );
-
   return response.data;
 };
 
-export const markHabitComplete = async (
-  habitId
-) => {
-
+// 1. Add 'date' parameter and pass it in the POST body
+export const markHabitComplete = async (habitId, date) => {
   const token = localStorage.getItem("token");
-
   const response = await api.post(
     "/logs/complete",
-    { habitId },
+    { habitId, date }, 
     {
       headers: {
         Authorization: `Bearer ${token}`
       }
     }
   );
-
   return response.data;
 };
 
-export const unmarkHabitComplete = async (
-  habitId
-) => {
-
+// 2. Add 'date' parameter and pass it in the DELETE data payload
+export const unmarkHabitComplete = async (habitId, date) => {
   const token = localStorage.getItem("token");
-
   const response = await api.delete(
     "/logs/complete",
     {
       headers: {
         Authorization: `Bearer ${token}`
       },
-      data: { habitId }
+      data: { habitId, date } 
     }
   );
-
   return response.data;
 };
 
-export const getHabitStats = async (
-  habitId
-) => {
-
-  const token =
-    localStorage.getItem("token");
-
+export const getHabitStats = async (habitId) => {
+  const token = localStorage.getItem("token");
   const response = await api.get(
     `/logs/stats/${habitId}`,
     {
@@ -69,15 +53,11 @@ export const getHabitStats = async (
       }
     }
   );
-
   return response.data;
 };
 
 export const getHeatmapData = async () => {
-
-  const token =
-    localStorage.getItem("token");
-
+  const token = localStorage.getItem("token");
   const response = await api.get(
     "/logs/heatmap",
     {
@@ -86,26 +66,18 @@ export const getHeatmapData = async () => {
       }
     }
   );
-
   return response.data;
-
 };
 
 export const getAllStats = async () => {
-
-  const token =
-    localStorage.getItem("token");
-
+  const token = localStorage.getItem("token");
   const response = await api.get(
     "/logs/stats",
     {
       headers: {
-        Authorization:
-          `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       }
     }
   );
-
   return response.data;
-
 };
