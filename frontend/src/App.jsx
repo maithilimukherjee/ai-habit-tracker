@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import "./styles/globals.css"
+import AISuggestions from "./pages/AISuggestions";
 
 import ProtectedRoute from "./components/common/ProtectedRoute";
 
@@ -30,6 +31,8 @@ function App() {
           </ProtectedRoute>
         }
       />
+
+      <Route path="/ai/suggestions" element={<ProtectedRoute><AISuggestions /></ProtectedRoute>} />
 
     </Routes>
   );

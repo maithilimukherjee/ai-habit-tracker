@@ -140,12 +140,20 @@ export const suggestIdeas = async (req, res) => {
         const userMsg = `
 User goals: ${goals.join(", ")}
 Most productive time: ${productiveTime || "not specified"}
-Past struggles: ${
-    struggles.length ? struggles.join(", ") : "none provided"
-}
+Past struggles: ${struggles.length ? struggles.join(", ") : "none provided"}
 
-Suggest 3 personalised habits.
-Return JSON only.
+Suggest 3 personalised habits based on the above parameters.
+
+Return STRICT JSON ONLY. Do not include markdown formatting (like \`\`\`json) or any conversational text.
+Your response must be a JSON array of objects using this exact structure:
+
+[
+  {
+    "title": "Short, catchy habit name",
+    "description": "1-2 practical sentences explaining exactly how and when to do it.",
+    "category": "focus" 
+  }
+]
 `;
 
         const ai = await chatCompletion({

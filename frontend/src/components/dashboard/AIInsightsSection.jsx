@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import Card from "../common/Card";
 
+import { useNavigate } from "react-router-dom";
+
 import {
   getMorningMotivation,
   getWeeklyReport,
@@ -18,6 +20,7 @@ function AIInsightsSection() {
   const [weekly, setWeekly] = useState("");
   const [loading, setLoading] = useState(false);
   const [generated, setGenerated] = useState(false);
+  const navigate = useNavigate();
 
   const generateCoreInsights = async () => {
 
@@ -42,22 +45,9 @@ function AIInsightsSection() {
     }
   };
 
-  const handleSuggestions = async () => {
-    try {
-      setLoading(true);
-      const res = await suggestIdeas({
-        goals: ["focus", "discipline"],
-        productiveTime: "morning",
-        struggles: ["procrastination"]
-      });
-
-      alert("suggestions generated — check console or UI next step");
-      console.log(res);
-
-    } finally {
-      setLoading(false);
-    }
-  };
+  const handleSuggestions = () => {
+  navigate("/ai/suggestions");
+};
 
   const handleRecovery = async () => {
     try {

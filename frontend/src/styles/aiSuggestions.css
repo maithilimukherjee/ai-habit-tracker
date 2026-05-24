@@ -1,0 +1,89 @@
+.ai-suggestions-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ai-suggestions-card {
+  padding: 1.2rem;
+}
+
+.ai-suggestions-card h2 {
+  color: #ffe082;
+  margin-bottom: 0.3rem;
+}
+
+.subtext {
+  color: #bfa76a;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.form label {
+  font-size: 0.8rem;
+  color: #cbb27a;
+}
+
+.form input {
+  padding: 0.6rem;
+  border-radius: 10px;
+  border: 1px solid #5c4323;
+  background: #1b140d;
+  color: #f4e7c5;
+  outline: none;
+}
+
+.form input:focus {
+  border-color: #c89b3c;
+}
+
+.results {
+  margin-top: 1rem;
+}
+
+.results h3 {
+  color: #ffe082;
+  margin-bottom: 0.8rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.habit-card {
+  background: #2a2118;
+  border: 1px solid #5c4323;
+  padding: 1rem;
+  border-radius: 14px;
+  transition: 0.2s ease;
+}
+
+.habit-card:hover {
+  transform: translateY(-3px);
+  border-color: #c89b3c;
+}
+
+.habit-card h4 {
+  color: #ffd54f;
+  margin-bottom: 0.4rem;
+}
+
+.habit-card p {
+  color: #f4e7c5;
+  font-size: 0.9rem;
+}
+
+.tag {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #c89b3c;
+}
