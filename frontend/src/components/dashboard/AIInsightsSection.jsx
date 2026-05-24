@@ -54,20 +54,7 @@ function AIInsightsSection() {
   };
 
   const handleChat = async () => {
-    const question = prompt("ask anything about your habits:");
-
-    if (!question) return;
-
-    try {
-      setLoading(true);
-
-      const res = await chatAnalysis(question);
-
-      alert(res.answer);
-
-    } finally {
-      setLoading(false);
-    }
+    navigate("/ai/chat")
   };
 
   return (

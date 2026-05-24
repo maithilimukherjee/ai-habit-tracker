@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import "./styles/globals.css"
 import AISuggestions from "./pages/AISuggestions";
 import RecoveryPlan from "./pages/RecoveryPlan";
+import HabitChat from "./pages/HabitChat";
 
 import ProtectedRoute from "./components/common/ProtectedRoute";
 
@@ -35,6 +36,7 @@ function App() {
 
       <Route path="/ai/suggestions" element={<ProtectedRoute><AISuggestions /></ProtectedRoute>} />
       <Route path="/ai/recovery" element={<ProtectedRoute><RecoveryPlan /></ProtectedRoute>} />
+      <Route path="/ai/chat" element={<ProtectedRoute><HabitChat /></ProtectedRoute>} />
 
     </Routes>
   );

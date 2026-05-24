@@ -1,0 +1,131 @@
+.chat-page {
+  display: flex;
+  width: 100%;
+  height: 100vh; /* FULL SCREEN */
+  background: #120d08;
+}
+
+/* MAIN CHAT WRAPPER */
+.chat-card {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* HEADER */
+.chat-card h2 {
+  color: #ffe082;
+  font-size: 1.3rem;
+  margin-bottom: 0.2rem;
+}
+
+.subtext {
+  color: #bfa76a;
+  font-size: 0.85rem;
+  margin-bottom: 0.8rem;
+}
+
+/* CHAT BODY */
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+/* MESSAGES AREA */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  background: #1b140d;
+  border: 1px solid #5c4323;
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  scroll-behavior: smooth;
+}
+
+/* IMPORTANT: FORCE LEFT ALIGN FOR AI */
+.bubble {
+  padding: 0.7rem 1rem;
+  border-radius: 14px;
+  max-width: 75%;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* USER RIGHT */
+.bubble.user {
+  align-self: flex-end;
+  background: #c89b3c;
+  color: #1b140d;
+  border-bottom-right-radius: 4px;
+}
+
+/* AI ALWAYS LEFT */
+.bubble.ai {
+  align-self: flex-start;
+  background: #2a2118;
+  border: 1px solid #5c4323;
+  color: #f4e7c5;
+  border-bottom-left-radius: 4px;
+}
+
+/* INPUT FIXED BOTTOM STYLE */
+.chat-input {
+  display: flex;
+  gap: 0.6rem;
+  padding-top: 0.8rem;
+  margin-top: 0.8rem;
+  border-top: 1px solid #2a2118;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #5c4323;
+  background: #1b140d;
+  color: #f4e7c5;
+  outline: none;
+}
+
+.chat-input input:focus {
+  border-color: #c89b3c;
+}
+
+.chat-input button {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: none;
+  background: #c89b3c;
+  color: #1b140d;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background: #ffd54f;
+}
+
+/* EMPTY STATE */
+.hint {
+  color: #bfa76a;
+  font-size: 0.85rem;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .bubble {
+    max-width: 90%;
+  }
+}
