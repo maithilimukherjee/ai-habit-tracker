@@ -190,3 +190,144 @@
     transform: translateX(0);
   }
 }
+
+.habit-form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 22px;
+
+  margin-top: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.form-group label {
+  font-size: 0.92rem;
+
+  color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 14px 16px;
+
+  border-radius: var(--radius-md);
+
+  background: rgba(255,255,255,0.05);
+
+  border: 1px solid transparent;
+
+  color: white;
+
+  transition: var(--transition);
+}
+
+.form-group textarea {
+  min-height: 100px;
+
+  resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--yellow-primary);
+
+  box-shadow:
+    0 0 0 4px rgba(255,214,10,0.12);
+}
+
+.form-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 16px;
+}
+
+.color-options {
+  display: flex;
+
+  gap: 14px;
+
+  flex-wrap: wrap;
+}
+
+.color-circle {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  border: 3px solid transparent;
+
+  transition: var(--transition);
+}
+
+.color-circle.active {
+  border-color: white;
+
+  transform: scale(1.08);
+}
+
+.form-group select {
+  appearance: none;
+
+  background: rgba(255,255,255,0.05);
+
+  color: var(--yellow-primary);
+
+  border: 1px solid var(--border-color);
+
+  cursor: pointer;
+}
+
+.form-group select option {
+  background: #111111;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--yellow-primary);
+}
+
+.icon-options {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+}
+
+.icon-button {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 14px;
+
+  background: rgba(255,255,255,0.05);
+
+  border: 1px solid transparent;
+
+  font-size: 1.3rem;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.icon-button:hover {
+  transform: translateY(-2px);
+}
+
+.icon-button.active {
+  border-color: var(--yellow-primary);
+
+  background: rgba(255,214,10,0.12);
+}

@@ -111,8 +111,9 @@ function HabitsSection() {
       {
   showModal && (
     <CreateHabitModal
-      closeModal={() => setShowModal(false)}
-    />
+  closeModal={() => setShowModal(false)}
+  setHabits={setHabits}
+/>
   )
 }
 
