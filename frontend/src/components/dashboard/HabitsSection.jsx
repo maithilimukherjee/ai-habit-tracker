@@ -4,8 +4,8 @@ import Section from "../common/Section";
 import Button from "../common/Button";
 import CreateHabitModal from "./CreateHabitModal";
 import HabitCard from "./HabitCard";
+import { getTodayLogs } from "../../services/logService";
 import "../../styles/section.css"
-
 import { getHabits } from "../../services/habitService";
 
 function HabitsSection() {
@@ -18,6 +18,8 @@ function HabitsSection() {
 
   const [showModal, setShowModal] = useState(false);
 
+  const [completedToday, setCompletedToday] = useState([]);
+
   useEffect(() => {
 
     const fetchHabits = async () => {
@@ -27,6 +29,12 @@ function HabitsSection() {
         const data = await getHabits();
 
         setHabits(data);
+
+        const todayData = await getTodayLogs();
+
+        const completedIds = todayData.logs.map((log) => log.habitId);
+
+        setCompletedToday(completedIds);
 
       } catch (err) {
 
@@ -100,6 +108,8 @@ function HabitsSection() {
                 <HabitCard
                   key={habit._id}
                   habit={habit}
+                  completedToday={completedToday}
+                  setCompletedToday={setCompletedToday}
                 />
               ))
             }

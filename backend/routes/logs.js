@@ -15,8 +15,8 @@ import { protect } from '../middleware/auth.js';
 const router = express.Router();
 
 router.use(protect);
-router.post("/", markComplete);
-router.post("/", unmarkComplete);
+router.post("/complete", markComplete);
+router.delete("/complete", unmarkComplete);
 router.get("/today", getToday);
 router.get("/range", getRange);
 router.get("/heatmap", getHeatMap);

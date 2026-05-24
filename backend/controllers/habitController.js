@@ -106,7 +106,7 @@ export const deleteHabit = async (req, res) =>
             return res.status(404).json({ message: "Habit not found" });
         }
 
-        await HabitLog.deleteMany({ habit: habit._id, userId: req.user._id });
+        await HabitLog.deleteMany({ habitId: habit._id, userId: req.user._id });
         res.json({ message: "Habit deleted successfully" });
     }
     catch (error)

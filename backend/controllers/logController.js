@@ -3,7 +3,8 @@ import HabitLog from "../models/HabitLog.js";
 import {
     last90Days,
     lastNDays,
-    calcStreak
+    calcStreak,
+    toDateKey
 } from "../utils/dateHelpers.js";
 
 /* -----------------------------
@@ -177,7 +178,7 @@ export const getHeatMap = async (req, res) => {
 export const getHabitStats = async (req, res) => {
     try {
         const habit = await Habit.findOne({
-            _id: req.params.id,
+            _id: req.params.habitId,
             user: req.user._id
         });
 
@@ -191,8 +192,10 @@ export const getHabitStats = async (req, res) => {
         });
 
         const dateKeys = logs.map(l =>
-            new Date(l.completedDate).toISOString().split("T")[0]
-        );
+    toDateKey(
+        new Date(l.completedDate)
+    )
+);
 
         const { current, longest } = calcStreak(dateKeys);
 
@@ -219,9 +222,11 @@ export const getAllStats = async (req, res) => {
             userId: req.user._id
         });
 
-        const last30 = lastNDays(30).map(d =>
-            normalizeDate(d).toISOString()
-        );
+       const last30 = lastNDays(30).map(d =>
+    toDateKey(
+        new Date(d)
+    )
+);
 
         const grouped = new Map();
 
@@ -234,15 +239,21 @@ export const getAllStats = async (req, res) => {
         const perHabit = habits.map(h => {
             const hLogs = grouped.get(h._id.toString()) || [];
 
-            const keys = hLogs.map(l =>
-                new Date(l.completedDate).toISOString().split("T")[0]
-            );
+           const keys = hLogs.map(l =>
+    toDateKey(
+        new Date(l.completedDate)
+    )
+);
 
             const { current, longest } = calcStreak(keys);
 
             const completions30d = hLogs.filter(l =>
-                last30.includes(new Date(l.completedDate).toISOString())
-            ).length;
+    last30.includes(
+        toDateKey(
+            new Date(l.completedDate)
+        )
+    )
+).length;
 
             return {
                 habitId: h._id,
