@@ -1,11 +1,13 @@
 import { useState } from "react";
 
 import Card from "../common/Card";
-import Button from "../common/Button";
 
 import {
   getMorningMotivation,
-  getWeeklyReport
+  getWeeklyReport,
+  suggestIdeas,
+  getRecoveryPlan,
+  chatAnalysis
 } from "../../services/aiService";
 
 import "../../styles/aiInsights.css";
@@ -14,37 +16,78 @@ function AIInsightsSection() {
 
   const [morning, setMorning] = useState("");
   const [weekly, setWeekly] = useState("");
-
   const [loading, setLoading] = useState(false);
   const [generated, setGenerated] = useState(false);
 
-  const generateInsights = async () => {
+  const generateCoreInsights = async () => {
 
     try {
 
       setLoading(true);
 
-      const [morningData, weeklyData] =
-        await Promise.all([
-          getMorningMotivation(),
-          getWeeklyReport()
-        ]);
+      const [m, w] = await Promise.all([
+        getMorningMotivation(),
+        getWeeklyReport()
+      ]);
 
-      setMorning(morningData.content);
-      setWeekly(weeklyData.content);
+      setMorning(m.content);
+      setWeekly(w.content);
 
       setGenerated(true);
 
-    } catch (error) {
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-      console.log(error);
+  const handleSuggestions = async () => {
+    try {
+      setLoading(true);
+      const res = await suggestIdeas({
+        goals: ["focus", "discipline"],
+        productiveTime: "morning",
+        struggles: ["procrastination"]
+      });
+
+      alert("suggestions generated — check console or UI next step");
+      console.log(res);
 
     } finally {
-
       setLoading(false);
-
     }
+  };
 
+  const handleRecovery = async () => {
+    try {
+      setLoading(true);
+
+      const res = await getRecoveryPlan("sampleHabitId");
+
+      alert("recovery plan generated");
+      console.log(res);
+
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleChat = async () => {
+    const question = prompt("ask anything about your habits:");
+
+    if (!question) return;
+
+    try {
+      setLoading(true);
+
+      const res = await chatAnalysis(question);
+
+      alert(res.answer);
+
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -52,34 +95,33 @@ function AIInsightsSection() {
     <Card className="ai-section">
 
       <div className="ai-header">
-
         <h2>ai insights</h2>
-
-        <span>powered by your habits</span>
-
+        <span>your habit coach</span>
       </div>
 
       {!generated && !loading && (
 
         <div className="ai-empty">
 
-          <p>
-            meet ur ai habit coach!
-          </p>
+          <p>meet your ai habit coach</p>
 
           <div className="ai-btn-group">
-          <button
-            className="ai-button"
-            onClick={generateInsights}
-          >
-            generate insights
-          </button>
 
-          <button className="ai-button"> suggest habits </button>
+            <button onClick={generateCoreInsights} className="ai-button">
+              generate insights
+            </button>
 
-          <button className="ai-button"> recovery plans </button>
+            <button onClick={handleSuggestions} className="ai-button">
+              suggest habits
+            </button>
 
-          <button className="ai-button"> ask away! </button>
+            <button onClick={handleRecovery} className="ai-button">
+              recovery plans
+            </button>
+
+            <button onClick={handleChat} className="ai-button">
+              ask away
+            </button>
 
           </div>
 
@@ -88,11 +130,9 @@ function AIInsightsSection() {
       )}
 
       {loading && (
-
         <p className="ai-loading">
           generating insights...
         </p>
-
       )}
 
       {generated && !loading && (
@@ -100,24 +140,18 @@ function AIInsightsSection() {
         <div className="ai-content">
 
           <div className="ai-card">
-
             <h3>morning motivation</h3>
-
             <p>{morning}</p>
-
           </div>
 
           <div className="ai-card">
-
             <h3>weekly reflection</h3>
-
             <p>{weekly}</p>
-
           </div>
 
           <button
             className="ai-button secondary"
-            onClick={generateInsights}
+            onClick={generateCoreInsights}
           >
             regenerate
           </button>
@@ -129,7 +163,6 @@ function AIInsightsSection() {
     </Card>
 
   );
-
 }
 
 export default AIInsightsSection;
