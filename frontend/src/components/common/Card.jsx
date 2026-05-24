@@ -1,0 +1,12 @@
+import "../../styles/card.css"
+function Card({ children, className = "" }) {
+
+  return (
+    <div className={`custom-card ${className}`}>
+      {children}
+    </div>
+  );
+
+}
+
+export default Card;

@@ -1,0 +1,19 @@
+.custom-section {
+  margin-bottom: 40px;
+}
+
+.section-header {
+  margin-bottom: 24px;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+
+  margin-bottom: 8px;
+}
+
+.section-header p {
+  color: var(--text-secondary);
+
+  line-height: 1.5;
+}

@@ -1,3 +1,8 @@
+import "../styles/dashboard.css"
+import "../styles/habits.css"
+import HabitCard from "../components/dashboard/HabitCard"
+import HabitsSection from "../components/dashboard/HabitsSection";
+
 function Dashboard() {
 
   const user = JSON.parse(
@@ -5,16 +10,25 @@ function Dashboard() {
   );
 
   return (
-    <div
-      style={{
-        color: "white",
-        padding: "40px"
-      }}
-    >
+    <div className="dashboard-page">
 
-      <h1>
-        welcome back, {user?.name}!
-      </h1>
+      <div className="dashboard-header">
+
+        <div>
+
+          <h1>
+            welcome back, {user?.name}!
+          </h1>
+
+          <p>
+            consistency compounds into greatness.
+          </p>
+
+        </div>
+
+      </div>
+
+      <HabitsSection />
 
     </div>
   );
