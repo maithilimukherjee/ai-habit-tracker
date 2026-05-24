@@ -64,7 +64,7 @@ function AIInsightsSection() {
         <div className="ai-empty">
 
           <p>
-            no insights yet.
+            meet ur ai habit coach!
           </p>
 
           <div className="ai-btn-group">
@@ -78,6 +78,9 @@ function AIInsightsSection() {
           <button className="ai-button"> suggest habits </button>
 
           <button className="ai-button"> recovery plans </button>
+
+          <button className="ai-button"> ask away! </button>
+
           </div>
 
         </div>
