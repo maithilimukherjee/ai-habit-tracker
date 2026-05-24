@@ -50,17 +50,7 @@ function AIInsightsSection() {
 };
 
   const handleRecovery = async () => {
-    try {
-      setLoading(true);
-
-      const res = await getRecoveryPlan("sampleHabitId");
-
-      alert("recovery plan generated");
-      console.log(res);
-
-    } finally {
-      setLoading(false);
-    }
+    navigate("/ai/recovery")
   };
 
   const handleChat = async () => {

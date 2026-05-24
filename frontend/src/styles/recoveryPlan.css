@@ -1,0 +1,107 @@
+.recovery-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 500px; /* Optional: keeps the form clean and centered */
+  margin: 0 auto;
+  width: 100%;
+}
+
+.recovery-card {
+  padding: 1.5rem;
+}
+
+.recovery-card h2 {
+  color: #ffe082;
+  font-size: 1.4rem;
+  margin-bottom: 0.2rem;
+  text-transform: capitalize;
+}
+
+.subtext {
+  color: #bfa76a;
+  font-size: 0.85rem;
+  margin-bottom: 1.2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+label {
+  font-size: 0.8rem;
+  color: #cbb27a;
+  text-transform: capitalize;
+}
+
+/* 🎯 STYLED REPLACEMENT FOR THE DROPDOWN */
+.habit-dropdown {
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #5c4323;
+  background: #1b140d;
+  color: #f4e7c5;
+  outline: none;
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  
+  /* Standardizes behavior across browsers */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  /* Optional elegant custom arrow indicators */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23cbb27a' viewBox='0 0 16 16'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) center;
+  padding-right: 2.5rem;
+}
+
+.habit-dropdown:focus {
+  border-color: #c89b3c;
+  box-shadow: 0 0 0 2px rgba(200, 155, 60, 0.15);
+}
+
+/* Styles individual dropdown choice rows */
+.habit-dropdown option {
+  background: #1b140d;
+  color: #f4e7c5;
+  padding: 0.5rem;
+}
+
+.loading-text {
+  font-size: 0.9rem;
+  color: #bfa76a;
+  font-style: italic;
+  padding: 0.5rem 0;
+}
+
+.recovery-result {
+  margin-top: 0.5rem;
+}
+
+.plan-card {
+  background: #2a2118;
+  border: 1px solid #5c4323;
+  border-radius: 14px;
+  padding: 1.2rem;
+}
+
+.plan-card h3 {
+  color: #ffd54f;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.plan-card pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #f4e7c5;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  font-family: inherit; /* Prevents ugly default monospace browser override */
+}
