@@ -73,3 +73,39 @@ export const getHabitStats = async (
   return response.data;
 };
 
+export const getHeatmapData = async () => {
+
+  const token =
+    localStorage.getItem("token");
+
+  const response = await api.get(
+    "/logs/heatmap",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+
+  return response.data;
+
+};
+
+export const getAllStats = async () => {
+
+  const token =
+    localStorage.getItem("token");
+
+  const response = await api.get(
+    "/logs/stats",
+    {
+      headers: {
+        Authorization:
+          `Bearer ${token}`
+      }
+    }
+  );
+
+  return response.data;
+
+};

@@ -2,6 +2,9 @@ import "../styles/dashboard.css"
 import "../styles/habits.css"
 import HabitCard from "../components/dashboard/HabitCard"
 import HabitsSection from "../components/dashboard/HabitsSection";
+import HeatmapSection from "../components/dashboard/HeatmapSection";
+import StatsSection from "../components/dashboard/StatsSection";
+import AIInsightsSection from "../components/dashboard/AIInsightsSection";
 
 function Dashboard() {
 
@@ -29,6 +32,17 @@ function Dashboard() {
       </div>
 
       <HabitsSection />
+
+      
+      <div className="dashboard-insights">
+
+  <HeatmapSection />
+
+  <StatsSection />
+
+</div>
+
+    <AIInsightsSection />
 
     </div>
   );

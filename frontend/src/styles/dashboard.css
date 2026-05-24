@@ -29,3 +29,25 @@
 body{
     text-align: center;
 }
+.dashboard-insights {
+
+  display: grid;
+
+  grid-template-columns:
+    2fr 1fr;
+
+  gap: 1.5rem;
+
+  align-items: start;
+
+}
+
+@media (max-width: 900px) {
+
+  .dashboard-insights {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
