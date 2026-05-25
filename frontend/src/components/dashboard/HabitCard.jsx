@@ -1,22 +1,19 @@
 import Card from "../common/Card";
-import "../../styles/habits.css"
+import "../../styles/habits.css";
 
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import {
   markHabitComplete,
-  unmarkHabitComplete
-} from "../../services/logService";
-
-import {
+  unmarkHabitComplete,
   getHabitStats
 } from "../../services/logService";
 
 function HabitCard({
   habit,
   completedToday,
-  setCompletedToday
+  setCompletedToday,
+  onDelete
 }) {
 
   const isCompleted =
@@ -29,16 +26,56 @@ function HabitCard({
 
   useEffect(() => {
 
-  const fetchStats = async () => {
+    const fetchStats = async () => {
+
+      try {
+
+        const data =
+          await getHabitStats(habit._id);
+
+        setStats(data);
+
+      } catch (error) {
+
+        console.log(error);
+
+      }
+    };
+
+    fetchStats();
+
+  }, [habit._id, isCompleted]);
+
+  const handleToggleComplete = async () => {
 
     try {
 
-      const data =
-        await getHabitStats(
-          habit._id
+      const localDate =
+        new Date().toLocaleDateString("en-CA");
+
+      if (isCompleted) {
+
+        await unmarkHabitComplete(
+          habit._id,
+          localDate
         );
 
-      setStats(data);
+        setCompletedToday((prev) =>
+          prev.filter((id) => id !== habit._id)
+        );
+
+      } else {
+
+        await markHabitComplete(
+          habit._id,
+          localDate
+        );
+
+        setCompletedToday((prev) => [
+          ...prev,
+          habit._id
+        ]);
+      }
 
     } catch (error) {
 
@@ -47,35 +84,11 @@ function HabitCard({
     }
   };
 
-  fetchStats();
-
-}, [habit._id, isCompleted]);
-
-
-  const handleToggleComplete = async () => {
-    try {
-        // Gets local date in YYYY-MM-DD format (e.g., "2026-05-25")
-        const localDate = new Date().toLocaleDateString('en-CA'); 
-
-        if (isCompleted) {
-            await unmarkHabitComplete(habit._id, localDate); // Passed here
-            setCompletedToday((prev) => prev.filter((id) => id !== habit._id));
-        } else {
-            await markHabitComplete(habit._id, localDate); // Passed here
-            setCompletedToday((prev) => [...prev, habit._id]);
-        }
-    } catch (error) {
-        console.log(error);
-    }
-};
-
   return (
 
     <Card
       className={`habit-card ${
-        isCompleted
-          ? "completed"
-          : ""
+        isCompleted ? "completed" : ""
       }`}
     >
 
@@ -115,16 +128,13 @@ function HabitCard({
       </div>
 
       <div className="habit-streak">
-
-      🔥 {stats.currentStreak}
-
+        🔥 {stats.currentStreak}
       </div>
 
+      <div className="habit-btn-group">
       <button
         className={`complete-button ${
-          isCompleted
-            ? "done"
-            : ""
+          isCompleted ? "done" : ""
         }`}
         onClick={handleToggleComplete}
       >
@@ -136,6 +146,17 @@ function HabitCard({
         }
 
       </button>
+
+      
+
+        <button
+          className="habit-action-btn delete"
+          onClick={() => onDelete(habit._id)}
+        >
+          delete
+        </button>
+
+      </div>
 
     </Card>
   );

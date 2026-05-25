@@ -1,13 +1,9 @@
 .habits-header {
   display: flex;
-
   justify-content: space-between;
   align-items: center;
-
   margin-bottom: 24px;
-
   gap: 16px;
-
   flex-wrap: wrap;
 }
 
@@ -17,73 +13,55 @@
 
 .habits-grid {
   display: grid;
-
   grid-template-columns:
     repeat(auto-fit, minmax(280px, 1fr));
-
   gap: 20px;
 }
 
 .habit-card {
   display: flex;
   flex-direction: column;
-
   gap: 20px;
-
   cursor: pointer;
 }
 
 .habit-top {
   display: flex;
   align-items: flex-start;
-
   gap: 14px;
 }
 
 .habit-color {
   width: 14px;
   height: 14px;
-
   border-radius: 50%;
-
   margin-top: 7px;
-
   flex-shrink: 0;
 }
 
 .habit-info h3 {
   font-size: 1.05rem;
-
   margin-bottom: 6px;
 }
 
 .habit-info p {
   color: var(--text-secondary);
-
   line-height: 1.5;
-
   font-size: 0.92rem;
 }
 
 .habit-meta {
   display: flex;
-
   gap: 10px;
-
   flex-wrap: wrap;
 }
 
 .habit-meta span {
   padding: 8px 12px;
-
   border-radius: 999px;
-
   background: rgba(255,255,255,0.05);
-
   font-size: 0.82rem;
-
   color: var(--text-secondary);
-
   border: 1px solid var(--border-color);
 }
 
@@ -98,13 +76,9 @@
 
 .empty-state {
   padding: 50px 20px;
-
   text-align: center;
-
   border-radius: var(--radius-lg);
-
   border: 1px dashed var(--border-color);
-
   background: rgba(255,255,255,0.02);
 }
 
@@ -116,45 +90,33 @@
   color: var(--text-secondary);
 }
 
+/* MODAL */
+
 .modal-overlay {
   position: fixed;
-
   inset: 0;
-
   background: rgba(0,0,0,0.6);
-
   backdrop-filter: blur(6px);
-
   display: flex;
-
   justify-content: flex-end;
-
   z-index: 1000;
 }
 
 .habit-modal {
   width: 100%;
   max-width: 500px;
-
   height: 100vh;
-
   background: #111111;
-
   border-left: 1px solid var(--border-color);
-
   padding: 32px;
-
   animation: slideIn 0.3s ease;
-
   overflow-y: auto;
 }
 
 .modal-header {
   display: flex;
-
   justify-content: space-between;
   align-items: center;
-
   margin-bottom: 20px;
 }
 
@@ -165,15 +127,10 @@
 .close-button {
   width: 40px;
   height: 40px;
-
   border-radius: 50%;
-
   background: rgba(255,255,255,0.05);
-
   color: white;
-
   cursor: pointer;
-
   transition: var(--transition);
 }
 
@@ -191,25 +148,23 @@
   }
 }
 
+/* FORM */
+
 .habit-form {
   display: flex;
   flex-direction: column;
-
   gap: 22px;
-
   margin-top: 30px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-
   gap: 10px;
 }
 
 .form-group label {
   font-size: 0.92rem;
-
   color: var(--text-secondary);
 }
 
@@ -217,21 +172,15 @@
 .form-group textarea,
 .form-group select {
   padding: 14px 16px;
-
   border-radius: var(--radius-md);
-
   background: rgba(255,255,255,0.05);
-
   border: 1px solid transparent;
-
   color: white;
-
   transition: var(--transition);
 }
 
 .form-group textarea {
   min-height: 100px;
-
   resize: none;
 }
 
@@ -239,55 +188,45 @@
 .form-group textarea:focus,
 .form-group select:focus {
   border-color: var(--yellow-primary);
-
   box-shadow:
     0 0 0 4px rgba(255,214,10,0.12);
 }
 
 .form-row {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-
   gap: 16px;
 }
 
+/* COLORS */
+
 .color-options {
   display: flex;
-
   gap: 14px;
-
   flex-wrap: wrap;
 }
 
 .color-circle {
   width: 34px;
   height: 34px;
-
   border-radius: 50%;
-
   cursor: pointer;
-
   border: 3px solid transparent;
-
   transition: var(--transition);
 }
 
 .color-circle.active {
   border-color: white;
-
   transform: scale(1.08);
 }
 
+/* SELECT */
+
 .form-group select {
   appearance: none;
-
   background: rgba(255,255,255,0.05);
-
   color: var(--yellow-primary);
-
   border: 1px solid var(--border-color);
-
   cursor: pointer;
 }
 
@@ -297,28 +236,22 @@
   color: var(--yellow-primary);
 }
 
+/* ICONS */
+
 .icon-options {
   display: flex;
-
   flex-wrap: wrap;
-
   gap: 12px;
 }
 
 .icon-button {
   width: 48px;
   height: 48px;
-
   border-radius: 14px;
-
   background: rgba(255,255,255,0.05);
-
   border: 1px solid transparent;
-
   font-size: 1.3rem;
-
   cursor: pointer;
-
   transition: var(--transition);
 }
 
@@ -328,33 +261,73 @@
 
 .icon-button.active {
   border-color: var(--yellow-primary);
-
   background: rgba(255,214,10,0.12);
 }
 
-.complete-button {
-  width: 100%;
+/* STREAK */
+
+.habit-streak {
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffd60a;
+  opacity: 0.9;
+}
+
+/* BUTTON GROUP */
+
+.habit-btn-group {
+  display: flex;
+  gap: 12px;
   margin-top: 1rem;
+}
+
+/* BOTH BUTTONS */
+
+.complete-button,
+.habit-action-btn {
+  flex: 1;
   padding: 0.85rem;
   border: none;
   border-radius: 14px;
-  background: #1c1c1e;
-  color: #ffd60a;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition: 0.25s ease;
 }
 
-.complete-button:hover {
-  transform: translateY(-2px);
-  background: #2a2a2d;
-}
+/* COMPLETE BUTTON */
 
-.complete-button.done {
+.complete-button {
   background: #ffd60a;
   color: black;
 }
+
+.complete-button:hover {
+  transform: translateY(-2px);
+  background: #ffe45e;
+}
+
+.complete-button.done {
+  background: #f8df54;
+  color: rgb(8, 0, 0);
+}
+
+/* DELETE BUTTON */
+
+.habit-action-btn.delete {
+  background: #1c1c1e;
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.25);
+}
+
+.habit-action-btn.delete:hover {
+  transform: translateY(-2px);
+  background: #2a2a2d;
+  border-color: #ff6b6b;
+}
+
+/* COMPLETED CARD */
 
 .habit-card.completed {
   border: 1px solid #ffd60a;
@@ -362,10 +335,21 @@
     0 0 25px rgba(255, 214, 10, 0.25);
 }
 
-.habit-streak {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #ffd60a;
-  opacity: 0.9;
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .habit-btn-group {
+    flex-direction: column;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .habit-modal {
+    max-width: 100%;
+    padding: 24px;
+  }
+
 }

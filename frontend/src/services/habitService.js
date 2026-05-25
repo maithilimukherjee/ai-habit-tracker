@@ -26,3 +26,22 @@ export const createHabit = async (habitData) => {
   );
   return response.data;
 };
+
+export const deleteHabit = async (habitId) => {
+
+  const token =
+    localStorage.getItem("token");
+
+  const response =
+    await api.delete(
+      `/habits/${habitId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+
+  return response.data;
+
+};

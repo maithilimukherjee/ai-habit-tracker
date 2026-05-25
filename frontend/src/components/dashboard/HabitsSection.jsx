@@ -4,20 +4,18 @@ import Section from "../common/Section";
 import Button from "../common/Button";
 import CreateHabitModal from "./CreateHabitModal";
 import HabitCard from "./HabitCard";
+
 import { getTodayLogs } from "../../services/logService";
-import "../../styles/section.css"
-import { getHabits } from "../../services/habitService";
+import { getHabits, deleteHabit } from "../../services/habitService";
+
+import "../../styles/section.css";
 
 function HabitsSection() {
 
   const [habits, setHabits] = useState([]);
-
   const [loading, setLoading] = useState(true);
-
   const [error, setError] = useState("");
-
   const [showModal, setShowModal] = useState(false);
-
   const [completedToday, setCompletedToday] = useState([]);
 
   useEffect(() => {
@@ -32,7 +30,8 @@ function HabitsSection() {
 
         const todayData = await getTodayLogs();
 
-        const completedIds = todayData.logs.map((log) => log.habitId);
+        const completedIds =
+          todayData.logs.map((log) => log.habitId);
 
         setCompletedToday(completedIds);
 
@@ -54,7 +53,38 @@ function HabitsSection() {
 
   }, []);
 
+  const handleDelete = async (habitId) => {
+
+    const confirmDelete =
+      window.confirm(
+        "delete this habit permanently?"
+      );
+
+    if (!confirmDelete) return;
+
+    try {
+
+      await deleteHabit(habitId);
+
+      setHabits((prev) =>
+        prev.filter(
+          (habit) => habit._id !== habitId
+        )
+      );
+
+      setCompletedToday((prev) =>
+        prev.filter((id) => id !== habitId)
+      );
+
+    } catch (error) {
+
+      console.log(error);
+
+    }
+  };
+
   return (
+
     <Section
       title="your habits"
       subtitle="small actions repeated daily create massive transformation."
@@ -67,7 +97,7 @@ function HabitsSection() {
         </p>
 
         <Button onClick={() => setShowModal(true)}>
-        + add habit
+          + add habit
         </Button>
 
       </div>
@@ -105,12 +135,15 @@ function HabitsSection() {
 
             {
               habits.map((habit) => (
+
                 <HabitCard
                   key={habit._id}
                   habit={habit}
                   completedToday={completedToday}
                   setCompletedToday={setCompletedToday}
+                  onDelete={handleDelete}
                 />
+
               ))
             }
 
@@ -118,14 +151,17 @@ function HabitsSection() {
 
         )
       }
+
       {
-  showModal && (
-    <CreateHabitModal
-  closeModal={() => setShowModal(false)}
-  setHabits={setHabits}
-/>
-  )
-}
+        showModal && (
+
+          <CreateHabitModal
+            closeModal={() => setShowModal(false)}
+            setHabits={setHabits}
+          />
+
+        )
+      }
 
     </Section>
   );
