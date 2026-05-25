@@ -26,6 +26,10 @@
   line-height: 1.5;
 }
 
+span{
+  color: rgb(247, 243, 28);
+}
+
 body{
     text-align: center;
 }
@@ -50,4 +54,43 @@ body{
 
   }
 
+}
+
+.profile-menu-btn {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background: rgba(255,255,255,0.05);
+
+  color: #ffd60a;
+
+  font-size: 1.2rem;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+
+  flex-shrink: 0;
+
+  align-self: flex-start;
+}
+
+.profile-menu-btn:hover {
+  background: rgba(255,255,255,0.1);
+  transform: rotate(90deg);
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.dashboard-heading {
+  display: flex;
+  flex-direction: column;
 }

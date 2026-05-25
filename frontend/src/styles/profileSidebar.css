@@ -1,0 +1,142 @@
+.profile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  z-index: 1200;
+}
+
+.profile-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  width: 340px;
+  max-width: 90%;
+
+  height: 100vh;
+
+  background: #111111;
+
+  border-left: 1px solid rgba(255,255,255,0.08);
+
+  padding: 1.5rem;
+
+  z-index: 1300;
+
+  animation: slideProfile 0.28s ease;
+
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideProfile {
+
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-header h2 {
+  color: #ffd60a;
+  font-size: 1.2rem;
+}
+
+.close-profile {
+  background: transparent;
+  border: none;
+  color: #f4e7c5;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.profile-content {
+  margin-top: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 1rem;
+}
+
+.profile-avatar {
+  width: 92px;
+  height: 92px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border: 3px solid #ffd60a;
+}
+
+.profile-content h3 {
+  color: white;
+  font-size: 1.1rem;
+}
+
+.profile-content p {
+  color: #bfa76a;
+  font-size: 0.9rem;
+}
+
+.profile-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 0.8rem 0;
+}
+
+.profile-section {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0.9rem 1rem;
+
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.04);
+
+  color: #f4e7c5;
+}
+
+.logout-btn {
+  margin-top: auto;
+
+  width: 100%;
+
+  padding: 0.9rem;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: #ffd60a;
+
+  color: black;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+  background: #ffe45e;
+}
