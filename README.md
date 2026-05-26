@@ -4,6 +4,8 @@ AI Habit Tracker is a full-stack productivity and habit-building application tha
 
 The application helps users build consistency, monitor streaks, visualize progress, recover from broken streaks, and receive personalized habit recommendations using generative AI.
 
+![Main Dashboard](screenshots/demo1.png)
+
 ---
 
 # Features
@@ -46,6 +48,16 @@ The application helps users build consistency, monitor streaks, visualize progre
 * Interactive habit cards
 * Real-time streak updates
 * Full-screen AI chat interface
+
+### Heatmap & Momentum Preview
+![Consistency Heatmap](screenshots/demo2.png)
+
+### AI Habit Coach Portal
+![AI Coach Selection Menu](screenshots/demo3.png)
+
+### Dynamic Recommendations Workflow
+![AI Suggestions Input Form](screenshots/demo4.png)
+![AI Personalized Results Output](screenshots/demo5.png)
 
 ---
 
