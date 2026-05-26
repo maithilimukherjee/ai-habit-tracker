@@ -64,7 +64,7 @@ function Login() {
 
       <div className="auth-card">
 
-        <h1>track smarter.</h1>
+        <h1>welcome back!</h1>
 
         <p>
           build habits with AI-powered consistency.
